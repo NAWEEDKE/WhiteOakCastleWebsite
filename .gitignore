@@ -1,0 +1,29 @@
+# Video files (large — store locally, do NOT upload to GitHub)
+assets/gallery/extirior/*.MP4
+assets/gallery/interior/*.MP4
+assets/gallery/dron and inaguation/*.MP4
+assets/gallery/*.MP4
+
+# Keep the subfolder structure but ignore binary video files
+*.MP4
+*.mp4
+*.MOV
+*.mov
+*.AVI
+*.avi
+
+# Temp / scratch files
+*.py
+inspect_codec.py
+move_videos_and_images.py
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+
+# Node (if ever used)
+node_modules/

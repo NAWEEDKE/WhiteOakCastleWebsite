@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Portal - White Oak Castle</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        .portal-section {
+            padding-top: 140px;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .portal-container {
+            max-width: 1000px;
+            width: 100%;
+            padding: 0 5%;
+        }
+
+        /* Badge Styles for Client Portal Table */
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .badge-pending-review {
+            background: rgba(197, 160, 89, 0.15);
+            color: #a47b30;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+        }
+        .badge-confirmed {
+            background: rgba(85, 107, 47, 0.15);
+            color: var(--accent-olive);
+            border: 1px solid rgba(85, 107, 47, 0.3);
+        }
+        .badge-awaiting-payment {
+            background: rgba(230, 126, 34, 0.15);
+            color: #d35400;
+            border: 1px solid rgba(230, 126, 34, 0.3);
+        }
+        .badge-expired {
+            background: rgba(127, 140, 141, 0.15);
+            color: #7f8c8d;
+            border: 1px solid rgba(127, 140, 141, 0.3);
+        }
+        .badge-rejected {
+            background: rgba(231, 76, 60, 0.15);
+            color: #c0392b;
+            border: 1px solid rgba(231, 76, 60, 0.3);
+        }
+
+        /* Payment Option Styles */
+        .payment-method-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            text-align: center;
+            background: rgba(255, 255, 255, 0.55);
+        }
+        .payment-method-label:hover {
+            border-color: var(--accent-olive);
+            background: rgba(85, 107, 47, 0.04);
+            transform: translateY(-2px);
+        }
+        .payment-method-label.active {
+            border-color: var(--accent-olive);
+            background: rgba(85, 107, 47, 0.08);
+            box-shadow: 0 4px 12px rgba(85, 107, 47, 0.1);
+        }
+    </style>
+</head>
+<body class="biophilic-theme">
+
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <header class="header glass-nav scrolled">
+        <nav class="navbar">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/logo/png/Oak ful logo green.png" alt="White Oak Castle" class="logo-img">
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About Venue</a></li>
+                <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li class="nav-item"><a href="booking.html" class="nav-link">Bookings</a></li>
+                <li class="nav-item"><a href="portal.html" class="nav-link active-page" id="nav-portal-link">Login Portal</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="portal-section">
+            <div class="portal-container">
+                
+                <!-- LOGIN / REGISTRATION CARD -->
+                <div id="portal-auth-card" class="portal-card" style="display: block;">
+                    <div class="portal-tabs">
+                        <div id="tab-login" class="portal-tab active">Login</div>
+                        <div id="tab-register" class="portal-tab">Register</div>
+                    </div>
+
+                    <!-- Login Form -->
+                    <form id="portal-login-form" style="display: block;">
+                        <h3 style="margin-bottom: 1.5rem; text-align: center; color: var(--accent-olive);">Welcome Back</h3>
+                        <div class="form-group">
+                            <label for="login-email">Email Address</label>
+                            <input type="email" id="login-email" class="form-control" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
+                        </div>
+                        <div id="login-error-msg" style="color: #dc3545; font-size: 0.85rem; margin-bottom: 1rem; display: none; text-align: center;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: text-top; margin-right: 4px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg> Invalid email or password. Please try again.
+                        </div>
+                        <button type="submit" class="btn btn-solid" style="width: 100%; border-radius: 12px; margin-top: 1rem;">Sign In</button>
+                        
+                        <div style="text-align: center; margin: 1.5rem 0 1rem;">
+                            <span style="color: var(--text-secondary); font-size: 0.85rem; padding: 0 10px; position: relative; display: inline-block;">
+                                <span style="position: absolute; top: 50%; left: -40px; width: 30px; height: 1px; background: var(--glass-border);"></span>
+                                OR
+                                <span style="position: absolute; top: 50%; right: -40px; width: 30px; height: 1px; background: var(--glass-border);"></span>
+                            </span>
+                        </div>
+                        <button type="button" onclick="alert('Google Sign-In is a simulated feature in this demo environment.')" class="btn btn-outline" style="width: 100%; border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 0.5rem; border-color: var(--glass-border); color: var(--text-primary); background: rgba(255, 255, 255, 0.5);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                            Continue with Google
+                        </button>
+                    </form>
+
+                    <!-- Register Form -->
+                    <form id="portal-register-form" style="display: none;">
+                        <h3 style="margin-bottom: 1.5rem; text-align: center; color: var(--accent-olive);">Create Client Account</h3>
+                        <div class="form-group">
+                            <label for="register-name">Full Name</label>
+                            <input type="text" id="register-name" class="form-control" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-email">Email Address</label>
+                            <input type="email" id="register-email" class="form-control" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-phone">Phone Number</label>
+                            <input type="tel" id="register-phone" class="form-control" placeholder="+91 9876543210" value="+91 " required pattern="\+91 [0-9]{10}">
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password">Password</label>
+                            <input type="password" id="register-password" class="form-control" placeholder="••••••••" minlength="4" required>
+                        </div>
+                        <div class="form-group" style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 1.5rem;">
+                            <input type="checkbox" id="portal-register-terms" required style="margin-top: 4px; accent-color: var(--accent-olive); cursor: pointer; width: 16px; height: 16px;">
+                            <label for="portal-register-terms" style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4; cursor: pointer; margin: 0;">I agree to the <a href="javascript:void(0)" onclick="event.preventDefault(); window.showTermsModal()" style="color: var(--accent-olive); text-decoration: underline;">Terms & Conditions and Privacy Policy</a>.</label>
+                        </div>
+                        <div id="register-error-msg" style="color: #dc3545; font-size: 0.85rem; margin-bottom: 1rem; display: none; text-align: center;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: text-top; margin-right: 4px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg> Email is already registered. Please login.
+                        </div>
+                        <button type="submit" class="btn btn-solid" style="width: 100%; border-radius: 12px; margin-top: 1rem;">Create Account</button>
+                        
+                        <div style="text-align: center; margin: 1.5rem 0 1rem;">
+                            <span style="color: var(--text-secondary); font-size: 0.85rem; padding: 0 10px; position: relative; display: inline-block;">
+                                <span style="position: absolute; top: 50%; left: -40px; width: 30px; height: 1px; background: var(--glass-border);"></span>
+                                OR
+                                <span style="position: absolute; top: 50%; right: -40px; width: 30px; height: 1px; background: var(--glass-border);"></span>
+                            </span>
+                        </div>
+                        <button type="button" onclick="alert('Google Sign-In is a simulated feature in this demo environment.')" class="btn btn-outline" style="width: 100%; border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 0.5rem; border-color: var(--glass-border); color: var(--text-primary); background: rgba(255, 255, 255, 0.5);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                            Continue with Google
+                        </button>
+                    </form>
+                </div>
+
+                <!-- CLIENT PORTAL DASHBOARD -->
+                <div id="portal-dashboard-section" class="portal-dashboard" style="display: none; width: 100%;">
+                    
+                    <!-- Welcome Card -->
+                    <div class="portal-profile-card">
+                        <div>
+                            <span class="glass-badge" style="margin-bottom: 0.5rem; color: var(--accent-olive); background: rgba(85, 107, 47, 0.1);">Login Portal</span>
+                            <h2 style="font-size: 2rem; margin-top: 0.5rem;">Hello, <span id="client-display-name" style="color: var(--accent-gold); font-weight: 800;">Client</span>!</h2>
+                            <p style="color: var(--text-secondary); margin-top: 0.2rem;" id="client-display-email">client@example.com</p>
+                        </div>
+                        <button id="portal-logout-btn" class="btn btn-outline logout-btn-animate" style="border-radius: 12px; padding: 0.8rem 1.8rem;">Logout</button>
+                    </div>
+
+                    <!-- Grid columns -->
+                    <div class="dashboard-grid-inner">
+                        <!-- Bookings Tracker -->
+                        <div class="portal-bookings-card">
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem; margin-bottom: 1.5rem;">
+                                <h3 style="font-size: 1.5rem; color: var(--accent-olive);">Your Booking Requests</h3>
+                                <a href="booking.html" class="btn btn-solid" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 8px;">New Booking</a>
+                            </div>
+
+                            <div class="portal-table-container">
+                                <table class="portal-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Booking ID</th>
+                                            <th>Event Type</th>
+                                            <th>Date & Time</th>
+                                            <th>Holding Deposit</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="portal-bookings-rows">
+                                        <!-- Rendered dynamically -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Account Security Card -->
+                        <div class="portal-bookings-card" style="max-width: 600px; width: 100%; margin: 0 auto; text-align: center;">
+                            <h3 style="font-size: 1.5rem; color: var(--accent-olive); border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem; margin-bottom: 1.5rem; text-align: center;">Account Security</h3>
+                            
+                            <div class="form-group" style="margin-bottom: 1.5rem;">
+                                <label style="font-weight: 500; font-size: 0.9rem; color: var(--text-primary); margin-bottom: 0.5rem; display: block; text-align: center;">Your Registered Password</label>
+                                <div style="position: relative; display: flex; align-items: center;">
+                                    <input type="password" id="dashboard-password-input" class="form-control" style="padding-right: 3.5rem; border-radius: 10px; text-align: center;" readonly>
+                                    <button type="button" id="toggle-dashboard-pwd" style="position: absolute; right: 1rem; background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text-secondary); outline: none;">👁️</button>
+                                </div>
+                            </div>
+
+                            <div style="border-top: 1px solid var(--glass-border); padding-top: 1.5rem; margin-top: 1.5rem;">
+                                <h4 style="font-size: 1.1rem; color: var(--accent-olive); margin-bottom: 1rem; text-align: center;">Update Password</h4>
+                                <form id="update-password-form">
+                                    <div class="form-group">
+                                        <input type="password" id="new-password-input" class="form-control" placeholder="Enter new password" minlength="4" required style="border-radius: 10px; text-align: center;">
+                                    </div>
+                                    <button type="submit" id="update-password-submit-btn" class="btn btn-solid" style="width: 100%; border-radius: 10px; padding: 0.8rem; transition: background 0.3s ease, border-color 0.3s ease;">Update Password</button>
+                                </form>
+                                <div id="update-pwd-success" style="color: var(--accent-olive); font-size: 0.85rem; margin-top: 0.8rem; display: none; text-align: center; font-weight: 600;">
+                                    ✓ Password updated successfully!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Stripe-Style Invoice Checkout Modal -->
+    <div id="checkout-modal" class="booking-success-modal" style="display: none; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(26, 34, 25, 0.6); backdrop-filter: blur(12px); z-index: 1200;">
+        <div class="success-card" style="background: #ffffff; border-radius: 24px; padding: 2.5rem; max-width: 500px; width: 90%; text-align: left; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); position: relative; margin: auto;">
+            <button id="close-checkout-modal" style="position: absolute; right: 1.5rem; top: 1.5rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-secondary);">&times;</button>
+            
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <img src="assets/logo/png/Oak logo green.png" alt="WOC" style="height: 50px; margin-bottom: 0.5rem; object-fit: contain;">
+                <h3 style="font-size: 1.6rem; color: var(--accent-olive); margin: 0;">Castle Booking Invoice</h3>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem;">Secure Pre-Payment Portal</p>
+            </div>
+            
+            <div style="background: rgba(85, 107, 47, 0.05); padding: 1.2rem; border-radius: 12px; border: 1px solid var(--glass-border); margin-bottom: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                    <span>Booking ID:</span>
+                    <strong id="invoice-booking-id" style="color: var(--text-primary); font-family: monospace;">WOC-XXXXX</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                    <span>Event Type:</span>
+                    <strong id="invoice-event-type" style="color: var(--text-primary);">Marriage</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                    <span>Event Date:</span>
+                    <strong id="invoice-event-date" style="color: var(--text-primary);">2026-07-20</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; border-top: 1px solid var(--glass-border); padding-top: 0.5rem; margin-top: 0.5rem; font-size: 1.05rem;">
+                    <strong style="color: var(--text-primary);">Required Deposit:</strong>
+                    <strong id="invoice-deposit-amount" style="color: var(--accent-gold);">Rs 1,000</strong>
+                </div>
+            </div>
+
+            <!-- Payment Method Selector -->
+            <div style="margin-bottom: 1.5rem;">
+                <label style="font-size: 0.85rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; display: block;">Select Payment Method</label>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem;">
+                    <label class="payment-method-label active" id="method-card-label">
+                        <input type="radio" name="payment-method" value="card" checked style="display: none;">
+                        <span style="font-size: 1.3rem; margin-bottom: 0.2rem;">💳</span>
+                        <span style="font-size: 0.75rem; font-weight: 600;">Card</span>
+                    </label>
+                    <label class="payment-method-label" id="method-upi-label">
+                        <input type="radio" name="payment-method" value="upi" style="display: none;">
+                        <span style="font-size: 1.3rem; margin-bottom: 0.2rem;">📱</span>
+                        <span style="font-size: 0.75rem; font-weight: 600;">UPI</span>
+                    </label>
+                    <label class="payment-method-label" id="method-bank-label">
+                        <input type="radio" name="payment-method" value="bank" style="display: none;">
+                        <span style="font-size: 1.3rem; margin-bottom: 0.2rem;">🏦</span>
+                        <span style="font-size: 0.75rem; font-weight: 600;">Bank</span>
+                    </label>
+                </div>
+            </div>
+            
+            <form id="stripe-checkout-form">
+                <!-- Card Fields -->
+                <div id="payment-fields-card" style="display: block;">
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.3rem; display: block;">Cardholder Name</label>
+                        <input type="text" id="card-name" class="form-control" placeholder="John Doe" required style="border-radius: 8px; padding: 0.6rem 0.8rem; font-size: 0.9rem;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.3rem; display: block;">Card Number</label>
+                        <div style="position: relative; display: flex; align-items: center;">
+                            <input type="text" id="card-number" class="form-control" placeholder="4242 •••• •••• 4242" maxlength="19" required style="border-radius: 8px; padding: 0.6rem 0.8rem; font-size: 0.9rem; width: 100%;">
+                            <span style="position: absolute; right: 1rem; font-size: 1.2rem; color: var(--text-secondary);">💳</span>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.3rem; display: block;">Expiration Date</label>
+                            <input type="text" id="card-expiry" class="form-control" placeholder="MM/YY" maxlength="5" required style="border-radius: 8px; padding: 0.6rem 0.8rem; font-size: 0.9rem; text-align: center;">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.3rem; display: block;">CVC / CVV</label>
+                            <input type="password" id="card-cvv" class="form-control" placeholder="•••" maxlength="4" required style="border-radius: 8px; padding: 0.6rem 0.8rem; font-size: 0.9rem; text-align: center;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UPI Fields -->
+                <div id="payment-fields-upi" style="display: none;">
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.3rem; display: block;">UPI ID (VPA)</label>
+                        <div style="position: relative; display: flex; align-items: center;">
+                            <input type="text" id="upi-id" class="form-control" placeholder="e.g. john@okhdfcbank" style="border-radius: 8px; padding: 0.6rem 0.8rem; font-size: 0.9rem; width: 100%;">
+                            <span style="position: absolute; right: 1rem; font-size: 1.2rem; color: var(--text-secondary);">📱</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bank Fields -->
+                <div id="payment-fields-bank" style="display: none;">
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.3rem; display: block;">Bank Name</label>
+                        <input type="text" id="bank-name" class="form-control" placeholder="e.g. HDFC Bank" style="border-radius: 8px; padding: 0.6rem 0.8rem; font-size: 0.9rem;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.3rem; display: block;">Account Number</label>
+                        <input type="text" id="bank-acc" class="form-control" placeholder="e.g. 50100234567890" style="border-radius: 8px; padding: 0.6rem 0.8rem; font-size: 0.9rem;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.3rem; display: block;">IFSC Code</label>
+                        <input type="text" id="bank-ifsc" class="form-control" placeholder="e.g. HDFC0000123" style="border-radius: 8px; padding: 0.6rem 0.8rem; font-size: 0.9rem; text-transform: uppercase;">
+                    </div>
+                </div>
+                
+                <div id="checkout-error-msg" style="color: #dc3545; font-size: 0.85rem; margin-bottom: 1rem; display: none; text-align: center; font-weight: 500;"></div>
+                
+                <button type="submit" id="pay-submit-btn" class="btn btn-solid" style="width: 100%; border-radius: 10px; padding: 0.8rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 0.5rem; background: var(--accent-gold); color: white; border: none; cursor: pointer;">
+                    <span>🔒</span> <span id="pay-btn-text">Pay Deposit Securely</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Custom Success Modal Popup -->
+    <div id="success-modal" class="booking-success-modal" style="display: none; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(26, 34, 25, 0.6); backdrop-filter: blur(12px); z-index: 1300;">
+        <div class="success-card" style="background: #ffffff; border-radius: 24px; padding: 2.5rem; max-width: 500px; width: 90%; text-align: center; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); position: relative; margin: auto;">
+            <div style="font-size: 4rem; color: #27ae60; margin-bottom: 1rem;">✓</div>
+            <h3 style="font-size: 1.8rem; color: var(--accent-olive); margin: 0 0 0.5rem 0;">Payment Successful!</h3>
+            <p style="font-size: 1.25rem; font-weight: 700; color: var(--accent-gold); margin-bottom: 1.5rem;" id="success-deposit-amount">Rs 1,000</p>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5; margin-bottom: 2rem;">
+                Your booking <strong id="success-booking-id" style="font-family: monospace; color: var(--text-primary);">WOC-XXXXX</strong> is now confirmed. The calendar slot is locked.
+            </p>
+            <div style="display: flex; gap: 1rem;">
+                <button id="success-share-btn" class="btn btn-solid" style="flex: 1; border-radius: 12px; background: var(--accent-olive); color: white; display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.8rem;">
+                    <span>🔗</span> Share Receipt
+                </button>
+                <button id="success-close-btn" class="btn btn-outline" style="flex: 1; border-radius: 12px; border-color: var(--glass-border); color: var(--text-primary); background: rgba(255, 255, 255, 0.5); padding: 0.8rem;">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- OTP Verification Modal -->
+    <div class="modal-backdrop" id="otp-backdrop" style="display:none; z-index: 100000;"></div>
+    <div class="login-modal" id="otp-modal" style="display:none; z-index: 100001; max-width: 450px; width: 90%;">
+        <div class="login-modal-content portal-card" style="position: relative; padding: 2.5rem; border-radius: 24px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); width: 100%; max-width: 450px; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.5); text-align: center;">
+            <button type="button" onclick="hideOtpModal()" style="position: absolute; top: 1.5rem; right: 1.5rem; background: rgba(85, 107, 47, 0.1); border: none; font-size: 1.5rem; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; color: var(--accent-olive); display: flex; align-items: center; justify-content: center; transition: all 0.2s ease;">&times;</button>
+            
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🛡️</div>
+            <h3 style="color: var(--accent-olive); font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">Verification Required</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5; margin-bottom: 2rem;">
+                Please enter the 6-digit OTP code that was sent to your device to verify your identity.
+            </p>
+            
+            <div class="form-group" style="margin-bottom: 1rem;">
+                <input type="text" id="otp-input" class="form-control" placeholder="• • • • • •" maxlength="6" style="text-align: center; font-size: 1.5rem; letter-spacing: 12px; padding: 1rem; border-radius: 12px; font-weight: 600;" required autocomplete="off">
+            </div>
+            
+            <div id="otp-error-msg" style="color: #dc3545; font-size: 0.85rem; margin-bottom: 1.5rem; display: none; font-weight: 500;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: text-top; margin-right: 4px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg> Invalid OTP code. Please try again.
+            </div>
+            
+            <button type="button" id="verify-otp-btn" class="btn btn-solid" style="width: 100%; border-radius: 12px; padding: 0.8rem; font-weight: 600;">Verify & Continue</button>
+            
+            <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 1.5rem; cursor: pointer;" onclick="resendOtp()">
+                Didn't receive code? <span style="color: var(--accent-olive); font-weight: 600;">Resend OTP</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Terms and Conditions Modal -->
+    <div class="modal-backdrop" id="terms-backdrop" style="display:none; z-index: 100000;"></div>
+    <div class="login-modal" id="terms-modal" style="display:none; z-index: 100001; max-width: 600px; width: 90%; max-height: 80vh;">
+        <div class="login-modal-content portal-card" style="position: relative; padding: 2.5rem; border-radius: 24px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); width: 100%; max-width: 600px; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.5); text-align: left; overflow-y: auto; max-height: 80vh;">
+            <button type="button" onclick="hideTermsModal()" style="position: absolute; top: 1.5rem; right: 1.5rem; background: rgba(85, 107, 47, 0.1); border: none; font-size: 1.5rem; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; color: var(--accent-olive); display: flex; align-items: center; justify-content: center; transition: all 0.2s ease;">&times;</button>
+            
+            <h3 style="color: var(--accent-olive); font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem;">Terms & Conditions</h3>
+            
+            <div style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
+                <h4 style="color: var(--text-primary); margin-bottom: 0.5rem; font-weight: 600;">1. Holding of Date & Deposits</h4>
+                <p style="margin-bottom: 1.5rem;">To secure your date at White Oak Castle, a non-refundable deposit is required at the time of booking. The specific deposit amount varies based on the event type. Your reservation is considered "Pending" until the deposit is received and confirmed by our team. Once confirmed, the date is officially held for your exclusive use.</p>
+                
+                <h4 style="color: var(--text-primary); margin-bottom: 0.5rem; font-weight: 600;">2. Payments & Balance</h4>
+                <p style="margin-bottom: 1.5rem;">The remaining balance of the venue rental fee must be paid in full at least 14 days prior to your scheduled event. Failure to pay the balance by this deadline may result in the cancellation of your booking and forfeiture of your deposit.</p>
+                
+                <h4 style="color: var(--text-primary); margin-bottom: 0.5rem; font-weight: 600;">3. Cancellations & Refunds</h4>
+                <p style="margin-bottom: 1.5rem;">As stated, the initial booking deposit is strictly non-refundable. If you cancel your event within 30 days of the scheduled date, any additional payments made toward the balance are also non-refundable. Cancellations made more than 30 days in advance may be eligible for a partial refund of the balance (excluding the deposit), subject to management approval.</p>
+                
+                <h4 style="color: var(--text-primary); margin-bottom: 0.5rem; font-weight: 600;">4. Damages & Liability</h4>
+                <p style="margin-bottom: 1.5rem;">The client is responsible for any damage to the White Oak Castle property, structural art, or facilities caused by the client, their guests, or contracted vendors during the event. An additional security deposit may be required prior to the event, which will be fully refunded within 7 days post-event if no damages occur.</p>
+
+                <h4 style="color: var(--text-primary); margin-bottom: 0.5rem; font-weight: 600;">5. Privacy Policy</h4>
+                <p style="margin-bottom: 0;">By registering, you consent to our collection and storage of your contact information for the purpose of managing your booking. We will not sell or share your personal data with third parties.</p>
+            </div>
+            
+            <div style="margin-top: 2rem; text-align: center;">
+                <button type="button" onclick="hideTermsModal()" class="btn btn-solid" style="padding: 0.8rem 2rem; border-radius: 12px; font-weight: 600; box-shadow: 0 4px 15px rgba(85, 107, 47, 0.2);">I Understand</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer" id="contact">
+        <div class="glass-panel footer-panel reveal active">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/logo/png/Oak ful logo green.png" alt="White Oak Castle" class="footer-logo">
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;">Moodal,<br>near
+                        Kuttippuram, Malappuram district,<br>Kerala 679571</p>
+                </div>
+                <div class="footer-links">
+                    <div class="f-col">
+                        <h4>Inquiries</h4>
+                        <a href="mailto:booking@whiteoakcastle.com">booking@whiteoakcastle.com</a>
+                        <a href="tel:+919876500000">+91 98765 00000</a>
+                        <a href="https://maps.google.com/?q=V2GW%2B943,+Moodal,+Athavanad,+Kerala+679571"
+                            target="_blank" style="text-decoration: underline;">Open Google Maps</a>
+                    </div>
+                    <div class="f-col">
+                        <h4>Navigation</h4>
+                        <a href="index.html">Home</a>
+                        <a href="about.html">Antigravity Structural Art</a>
+                        <a href="gallery.html">Gallery</a>
+                        <a href="booking.html">Bookings</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 White Oak Castle Convention Center. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ==========================================
+        // PREMIUM CUSTOM ALERT (TOAST) OVERRIDE
+        // ==========================================
+        window.alert = function(message) {
+            let container = document.getElementById('woc-toast-container');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'woc-toast-container';
+                container.style.cssText = `
+                    position: fixed;
+                    bottom: 24px;
+                    right: 24px;
+                    z-index: 100000;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                    pointer-events: none;
+                `;
+                document.body.appendChild(container);
+            }
+
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                border: 1px solid rgba(85, 107, 47, 0.3);
+                border-left: 6px solid var(--accent-olive, #556B2F);
+                color: var(--text-primary, #2d3748);
+                padding: 1.2rem 1.5rem;
+                border-radius: 12px;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+                font-family: 'Inter', sans-serif;
+                font-size: 0.95rem;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                transform: translateX(120%);
+                opacity: 0;
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                max-width: 380px;
+                pointer-events: auto;
+            `;
+
+            toast.innerHTML = `
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-olive, #556B2F)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                <span style="line-height: 1.4; flex-grow: 1;">${message}</span>
+                <button style="background: none; border: none; cursor: pointer; color: #a0aec0; padding: 4px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background 0.2s; margin-left: 8px;" onmouseover="this.style.background='rgba(0,0,0,0.05)'" onmouseout="this.style.background='none'" onclick="this.parentElement.style.opacity='0'; this.parentElement.style.transform='translateX(120%)'; setTimeout(() => this.parentElement.remove(), 400);">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            `;
+
+            container.appendChild(toast);
+
+            // Animate in
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    toast.style.transform = 'translateX(0)';
+                    toast.style.opacity = '1';
+                });
+            });
+
+            // Auto dismiss
+            setTimeout(() => {
+                if (document.body.contains(toast)) {
+                    toast.style.transform = 'translateX(120%)';
+                    toast.style.opacity = '0';
+                    setTimeout(() => {
+                        if (document.body.contains(toast)) {
+                            toast.remove();
+                        }
+                    }, 400);
+                }
+            }, 5000);
+        };
+
+        window.showTermsModal = () => {
+            const backdrop = document.getElementById('terms-backdrop');
+            const modal = document.getElementById('terms-modal');
+            if (backdrop && modal) {
+                backdrop.style.display = 'block';
+                modal.style.display = 'flex';
+                setTimeout(() => modal.classList.add('show'), 10);
+            }
+        };
+
+        window.hideTermsModal = () => {
+            const backdrop = document.getElementById('terms-backdrop');
+            const modal = document.getElementById('terms-modal');
+            if (backdrop && modal) {
+                modal.classList.remove('show');
+                setTimeout(() => {
+                    backdrop.style.display = 'none';
+                    modal.style.display = 'none';
+                }, 400);
+            }
+        };
+
+        // OTP Modal Management
+        let pendingAuthAction = null;
+        let pendingAuthData = null;
+        let currentExpectedOTP = null;
+
+        window.showOtpModal = () => {
+            const backdrop = document.getElementById('otp-backdrop');
+            const modal = document.getElementById('otp-modal');
+            if (backdrop && modal) {
+                backdrop.style.display = 'block';
+                modal.style.display = 'flex';
+                setTimeout(() => modal.classList.add('show'), 10);
+            }
+        };
+
+        window.hideOtpModal = () => {
+            const backdrop = document.getElementById('otp-backdrop');
+            const modal = document.getElementById('otp-modal');
+            if (backdrop && modal) {
+                modal.classList.remove('show');
+                setTimeout(() => {
+                    backdrop.style.display = 'none';
+                    modal.style.display = 'none';
+                    document.getElementById("otp-input").value = "";
+                    document.getElementById("otp-error-msg").style.display = "none";
+                }, 400);
+            }
+        };
+
+        window.resendOtp = () => {
+            currentExpectedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+            window.alert(`Security OTP Code: ${currentExpectedOTP}`);
+            document.getElementById("otp-input").value = "";
+            document.getElementById("otp-error-msg").style.display = "none";
+        };
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Hamburger Mobile Menu
+            const hamburger = document.querySelector(".hamburger");
+            const navMenu = document.querySelector(".nav-menu");
+            if (hamburger && navMenu) {
+                hamburger.addEventListener("click", () => {
+                    hamburger.classList.toggle("active");
+                    navMenu.classList.toggle("active");
+                });
+            }
+
+            // Auth Tab switching
+            const tabLogin = document.getElementById("tab-login");
+            const tabRegister = document.getElementById("tab-register");
+            const formLogin = document.getElementById("portal-login-form");
+            const formRegister = document.getElementById("portal-register-form");
+
+            if (tabLogin && tabRegister) {
+                tabLogin.addEventListener("click", () => {
+                    tabLogin.classList.add("active");
+                    tabRegister.classList.remove("active");
+                    formLogin.style.display = "block";
+                    formRegister.style.display = "none";
+                });
+                tabRegister.addEventListener("click", () => {
+                    tabRegister.classList.add("active");
+                    tabLogin.classList.remove("active");
+                    formRegister.style.display = "block";
+                    formLogin.style.display = "none";
+                });
+            }
+
+            // Database Helpers
+            const getClients = () => {
+                const clients = localStorage.getItem("whiteoak_clients");
+                return clients ? JSON.parse(clients) : [];
+            };
+            const saveClients = (clients) => {
+                localStorage.setItem("whiteoak_clients", JSON.stringify(clients));
+            };
+            
+            const sweepExpiredPaymentHolds = () => {
+                const raw = localStorage.getItem("whiteoak_bookings");
+                if (!raw) return;
+                const bookings = JSON.parse(raw);
+                const now = Date.now();
+                let modified = false;
+
+                bookings.forEach(b => {
+                    if (b.status === 'Awaiting Payment' && b.approvalTimestamp) {
+                        const ageMs = now - b.approvalTimestamp;
+                        if (ageMs > 24 * 60 * 60 * 1000) { // 24 hours TTL
+                            b.status = 'Expired';
+                            modified = true;
+                        }
+                    }
+                });
+
+                if (modified) {
+                    localStorage.setItem("whiteoak_bookings", JSON.stringify(bookings));
+                }
+            };
+
+            const getBookings = () => {
+                sweepExpiredPaymentHolds();
+                const bookings = localStorage.getItem("whiteoak_bookings");
+                return bookings ? JSON.parse(bookings) : [];
+            };
+
+            // Register Form Submit
+            formRegister.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const name = document.getElementById("register-name").value.trim();
+                const email = document.getElementById("register-email").value.trim().toLowerCase();
+                const phone = document.getElementById("register-phone").value.trim();
+                const password = document.getElementById("register-password").value;
+                const errMsg = document.getElementById("register-error-msg");
+
+                const clients = getClients();
+                if (clients.some(c => c.email === email)) {
+                    errMsg.style.display = "block";
+                    return;
+                }
+                errMsg.style.display = "none";
+
+                // Setup OTP for registration
+                pendingAuthAction = 'register';
+                pendingAuthData = { name, email, phone, password };
+                currentExpectedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+                
+                window.alert(`Security OTP Code: ${currentExpectedOTP}`);
+                showOtpModal();
+            });
+
+            // Login Form Submit
+            formLogin.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const email = document.getElementById("login-email").value.trim().toLowerCase();
+                const password = document.getElementById("login-password").value;
+                const errMsg = document.getElementById("login-error-msg");
+
+                const clients = getClients();
+                const client = clients.find(c => c.email === email && c.password === password);
+
+                if (!client) {
+                    errMsg.style.display = "block";
+                    return;
+                }
+                errMsg.style.display = "none";
+
+                // Setup OTP for login
+                pendingAuthAction = 'login';
+                pendingAuthData = { email: client.email, name: client.name };
+                currentExpectedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+                
+                window.alert(`Security OTP Code: ${currentExpectedOTP}`);
+                showOtpModal();
+            });
+            
+            // OTP Verification Button
+            const verifyOtpBtn = document.getElementById("verify-otp-btn");
+            if (verifyOtpBtn) {
+                verifyOtpBtn.addEventListener("click", () => {
+                    const enteredOTP = document.getElementById("otp-input").value.trim();
+                    const otpErrorMsg = document.getElementById("otp-error-msg");
+                    
+                    if (enteredOTP === currentExpectedOTP) {
+                        otpErrorMsg.style.display = "none";
+                        hideOtpModal();
+                        
+                        if (pendingAuthAction === 'register') {
+                            const clients = getClients();
+                            clients.push(pendingAuthData);
+                            saveClients(clients);
+                            sessionStorage.setItem("woc_client_email", pendingAuthData.email);
+                            sessionStorage.setItem("woc_client_name", pendingAuthData.name);
+                        } else if (pendingAuthAction === 'login') {
+                            sessionStorage.setItem("woc_client_email", pendingAuthData.email);
+                            sessionStorage.setItem("woc_client_name", pendingAuthData.name);
+                        }
+                        
+                        checkAuth();
+                    } else {
+                        otpErrorMsg.style.display = "block";
+                    }
+                });
+            }
+
+            // Logout Function
+            const performLogout = () => {
+                sessionStorage.removeItem("woc_client_email");
+                sessionStorage.removeItem("woc_client_name");
+                window.location.reload();
+            };
+
+            // Logout Button
+            const logoutBtn = document.getElementById("portal-logout-btn");
+            if (logoutBtn) {
+                logoutBtn.addEventListener("click", performLogout);
+            }
+
+            // Password Toggle and Update Logic
+            const togglePwdBtn = document.getElementById("toggle-dashboard-pwd");
+            const pwdInput = document.getElementById("dashboard-password-input");
+            if (togglePwdBtn && pwdInput) {
+                togglePwdBtn.addEventListener("click", () => {
+                    if (pwdInput.type === "password") {
+                        pwdInput.type = "text";
+                        togglePwdBtn.innerText = "🔒";
+                    } else {
+                        pwdInput.type = "password";
+                        togglePwdBtn.innerText = "👁️";
+                    }
+                });
+            }
+
+            const updatePwdForm = document.getElementById("update-password-form");
+            const updatePwdBtn = document.getElementById("update-password-submit-btn");
+            if (updatePwdForm && updatePwdBtn) {
+                updatePwdForm.addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    const newPwd = document.getElementById("new-password-input").value;
+                    const email = sessionStorage.getItem("woc_client_email");
+                    if (email) {
+                        // 1. Enter Loading State (1 second)
+                        updatePwdBtn.disabled = true;
+                        updatePwdBtn.innerHTML = '<span class="btn-spinner"></span> Hashing password...';
+                        
+                        setTimeout(() => {
+                            const clients = getClients();
+                            const clientIdx = clients.findIndex(c => c.email.toLowerCase() === email.toLowerCase());
+                            if (clientIdx !== -1) {
+                                clients[clientIdx].password = newPwd;
+                                saveClients(clients);
+                                
+                                // Update input and clear fields
+                                pwdInput.value = newPwd;
+                                document.getElementById("new-password-input").value = "";
+                                
+                                // 2. Show Success State
+                                updatePwdBtn.style.background = "#27ae60";
+                                updatePwdBtn.style.borderColor = "#27ae60";
+                                updatePwdBtn.innerHTML = "✓ Password Updated";
+                                
+                                const successMsg = document.getElementById("update-pwd-success");
+                                if (successMsg) {
+                                    successMsg.style.display = "block";
+                                    setTimeout(() => {
+                                        successMsg.style.display = "none";
+                                    }, 3000);
+                                }
+                                
+                                // 3. Reset Button state after 3 seconds
+                                setTimeout(() => {
+                                    updatePwdBtn.disabled = false;
+                                    updatePwdBtn.style.background = "";
+                                    updatePwdBtn.style.borderColor = "";
+                                    updatePwdBtn.innerHTML = "Update Password";
+                                }, 3000);
+                            } else {
+                                // Reset button if client not found
+                                updatePwdBtn.disabled = false;
+                                updatePwdBtn.innerHTML = "Update Password";
+                            }
+                        }, 1000); // 1-second simulated delay
+                    }
+                });
+            }
+
+            // Check Authentication State
+            const checkAuth = () => {
+                const email = sessionStorage.getItem("woc_client_email");
+                const name = sessionStorage.getItem("woc_client_name");
+
+                const authCard = document.getElementById("portal-auth-card");
+                const dashboard = document.getElementById("portal-dashboard-section");
+                const navPortalLink = document.getElementById("nav-portal-link");
+
+                if (email && name) {
+                    authCard.style.display = "none";
+                    dashboard.style.display = "grid";
+                    document.getElementById("client-display-name").innerText = name;
+                    document.getElementById("client-display-email").innerText = email;
+                    
+                    // Show current password
+                    const clients = getClients();
+                    const client = clients.find(c => c.email.toLowerCase() === email.toLowerCase());
+                    if (client && pwdInput) {
+                        pwdInput.value = client.password;
+                    }
+                    
+                    // Update Navbar Link dynamically
+                    if (navPortalLink) {
+                        navPortalLink.innerText = "Logout";
+                        navPortalLink.href = "#";
+                        navPortalLink.classList.add("logout-btn-animate");
+                        navPortalLink.onclick = (e) => {
+                            e.preventDefault();
+                            performLogout();
+                        };
+                    }
+                    
+                    renderClientBookings(email);
+                } else {
+                    authCard.style.display = "block";
+                    dashboard.style.display = "none";
+                    // Reset forms
+                    formLogin.reset();
+                    formRegister.reset();
+
+                    // Restore Navbar Link dynamically
+                    if (navPortalLink) {
+                        navPortalLink.innerText = "Login Portal";
+                        navPortalLink.href = "portal.html";
+                        navPortalLink.classList.remove("logout-btn-animate");
+                        navPortalLink.onclick = null;
+                    }
+                }
+            };
+
+            // Deposit Amount Map based on event type
+            const getDepositAmount = (type) => {
+                switch (type) {
+                    case "Marriage": return 1000;
+                    case "Engagement": return 500;
+                    case "Nikah": return 500;
+                    case "Graduation": return 300;
+                    case "Corporate Event": return 800;
+                    case "Photoshoot Only": return 50;
+                    default: return 200;
+                }
+            };
+
+            // Render Client Bookings
+            const renderClientBookings = (email) => {
+                const bookings = getBookings();
+                const clientBookings = bookings.filter(b => b.email.toLowerCase() === email.toLowerCase());
+                const tbody = document.getElementById("portal-bookings-rows");
+                tbody.innerHTML = "";
+
+                if (clientBookings.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-secondary); font-style: italic;">No bookings found under this account.</td></tr>`;
+                    return;
+                }
+
+                // Sort descending by date submitted
+                clientBookings.sort((a, b) => new Date(b.submittedAt) - new Date(a.submittedAt));
+
+                clientBookings.forEach(b => {
+                    const tr = document.createElement("tr");
+
+                    let statusBadgeClass = "badge-pending-review";
+                    let displayStatus = b.status;
+                    if (b.status === "Confirmed" || b.status === "Approved") {
+                        statusBadgeClass = "badge-confirmed";
+                        displayStatus = "Paid & Confirmed";
+                    }
+                    if (b.status === "Awaiting Payment") statusBadgeClass = "badge-awaiting-payment";
+                    if (b.status === "Expired") statusBadgeClass = "badge-expired";
+                    if (b.status === "Rejected") statusBadgeClass = "badge-rejected";
+
+                    const depositText = b.depositPaid ? `Rs ${b.depositPaid.toLocaleString('en-IN')}` : 'Rs 0';
+                    
+                    let actionHtml = `<span style="color: var(--text-secondary); font-style: italic; font-size: 0.85rem;">No action needed</span>`;
+                    if (b.status === "Awaiting Payment") {
+                        actionHtml = `<button class="btn btn-solid" style="padding: 0.4rem 0.8rem; font-size: 0.75rem; border-radius: 6px; background: var(--accent-gold); border: none; font-weight: 600; color: white;" onclick="openCheckout('${b.id}')">💳 Pay Deposit</button>`;
+                    } else if (b.status === "Confirmed" || b.status === "Approved") {
+                        actionHtml = `<span style="color: var(--accent-olive); font-weight: 600; font-size: 0.85rem;">✓ Paid & Locked</span>`;
+                    } else if (b.status === "Expired") {
+                        actionHtml = `<span style="color: #d9534f; font-weight: 600; font-size: 0.85rem;">Expired (24h TTL)</span>`;
+                    }
+
+                    tr.innerHTML = `
+                        <td style="font-weight: 600; font-family: monospace;">${b.id}</td>
+                        <td><span class="glass-badge" style="padding: 0.2, 0.6rem; font-size: 0.8rem;">${b.eventType}</span></td>
+                        <td><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: text-top; margin-right: 4px; color: var(--text-secondary);"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> ${b.eventDate || b.photoshootDate}<br><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: text-top; margin-right: 4px; margin-top: 4px; color: var(--text-secondary);"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> ${b.eventTime || 'N/A'}</td>
+                        <td style="font-weight: 600; color: var(--accent-gold);">${depositText}</td>
+                        <td><span class="badge ${statusBadgeClass}">${displayStatus}</span></td>
+                        <td>${actionHtml}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            };
+
+            // Checkout & Payment Method Selection Logic
+            const checkoutModal = document.getElementById("checkout-modal");
+            const closeCheckoutBtn = document.getElementById("close-checkout-modal");
+            const stripeForm = document.getElementById("stripe-checkout-form");
+            const successModal = document.getElementById("success-modal");
+            const successCloseBtn = document.getElementById("success-close-btn");
+            const successShareBtn = document.getElementById("success-share-btn");
+            let currentCheckoutBookingId = null;
+
+            // Handle Payment Method Switching
+            const methodRadios = document.querySelectorAll('input[name="payment-method"]');
+            const fieldsCard = document.getElementById("payment-fields-card");
+            const fieldsUpi = document.getElementById("payment-fields-upi");
+            const fieldsBank = document.getElementById("payment-fields-bank");
+
+            const cardInputs = fieldsCard ? fieldsCard.querySelectorAll('input') : [];
+            const upiInputs = fieldsUpi ? fieldsUpi.querySelectorAll('input') : [];
+            const bankInputs = fieldsBank ? fieldsBank.querySelectorAll('input') : [];
+
+            methodRadios.forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    // Update active label style
+                    document.querySelectorAll('.payment-method-label').forEach(lbl => {
+                        lbl.classList.remove('active');
+                    });
+                    e.target.closest('.payment-method-label').classList.add('active');
+
+                    // Toggle fields visibility & requirements
+                    const method = e.target.value;
+                    if (method === 'card') {
+                        if (fieldsCard) fieldsCard.style.display = 'block';
+                        if (fieldsUpi) fieldsUpi.style.display = 'none';
+                        if (fieldsBank) fieldsBank.style.display = 'none';
+                        cardInputs.forEach(input => input.required = true);
+                        upiInputs.forEach(input => input.required = false);
+                        bankInputs.forEach(input => input.required = false);
+                    } else if (method === 'upi') {
+                        if (fieldsCard) fieldsCard.style.display = 'none';
+                        if (fieldsUpi) fieldsUpi.style.display = 'block';
+                        if (fieldsBank) fieldsBank.style.display = 'none';
+                        cardInputs.forEach(input => input.required = false);
+                        upiInputs.forEach(input => input.required = true);
+                        bankInputs.forEach(input => input.required = false);
+                    } else if (method === 'bank') {
+                        if (fieldsCard) fieldsCard.style.display = 'none';
+                        if (fieldsUpi) fieldsUpi.style.display = 'none';
+                        if (fieldsBank) fieldsBank.style.display = 'block';
+                        cardInputs.forEach(input => input.required = false);
+                        upiInputs.forEach(input => input.required = false);
+                        bankInputs.forEach(input => input.required = true);
+                    }
+                });
+            });
+
+            window.openCheckout = (bookingId) => {
+                const bookings = getBookings();
+                const booking = bookings.find(b => b.id === bookingId);
+                if (!booking) return;
+
+                currentCheckoutBookingId = bookingId;
+                
+                // Get deposit amount
+                const deposit = getDepositAmount(booking.eventType);
+                
+                document.getElementById("invoice-booking-id").innerText = booking.id;
+                document.getElementById("invoice-event-type").innerText = booking.eventType;
+                document.getElementById("invoice-event-date").innerText = booking.eventDate || booking.photoshootDate;
+                document.getElementById("invoice-deposit-amount").innerText = `Rs ${deposit.toLocaleString('en-IN')}`;
+                
+                // Reset form fields and default to card method
+                stripeForm.reset();
+                const cardLabel = document.getElementById("method-card-label");
+                if (cardLabel) cardLabel.click();
+                
+                document.getElementById("checkout-error-msg").style.display = "none";
+                document.getElementById("pay-btn-text").innerText = "Pay Deposit Securely";
+                document.getElementById("pay-submit-btn").disabled = false;
+                
+                checkoutModal.style.display = "flex";
+            };
+
+            if (closeCheckoutBtn) {
+                closeCheckoutBtn.onclick = () => {
+                    checkoutModal.style.display = "none";
+                };
+            }
+
+            if (successCloseBtn) {
+                successCloseBtn.onclick = () => {
+                    successModal.style.display = "none";
+                };
+            }
+
+            // Web Share API with copy-to-clipboard fallback
+            if (successShareBtn) {
+                successShareBtn.onclick = () => {
+                    const bookingId = document.getElementById("success-booking-id").innerText;
+                    const amount = document.getElementById("success-deposit-amount").innerText;
+                    const shareTitle = "White Oak Castle Booking Receipt";
+                    const shareText = `Official Booking Receipt - White Oak Castle\nBooking ID: ${bookingId}\nPre-Payment Deposit: ${amount}\nStatus: PAID & CONFIRMED\nThank you for choosing White Oak Castle.`;
+                    
+                    if (navigator.share) {
+                        navigator.share({
+                            title: shareTitle,
+                            text: shareText,
+                            url: window.location.origin
+                        }).catch(console.error);
+                    } else {
+                        // Fallback to Clipboard copy
+                        navigator.clipboard.writeText(`${shareText}\nVerified at: ${new Date().toLocaleString()}`).then(() => {
+                            alert("📋 Receipt copied to clipboard!");
+                        }).catch(err => {
+                            console.error("Failed to copy receipt: ", err);
+                        });
+                    }
+                };
+            }
+
+            // Simple Card Form Input Helpers
+            const cardNumInput = document.getElementById("card-number");
+            if (cardNumInput) {
+                cardNumInput.oninput = (e) => {
+                    let v = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+                    let matches = v.match(/\d{4,16}/g);
+                    let match = matches && matches[0] || '';
+                    let parts = [];
+                    for (let i=0, len=match.length; i<len; i+=4) {
+                        parts.push(match.substring(i, i+4));
+                    }
+                    if (parts.length > 0) {
+                        e.target.value = parts.join(' ');
+                    } else {
+                        e.target.value = v;
+                    }
+                };
+            }
+
+            const cardExpiryInput = document.getElementById("card-expiry");
+            if (cardExpiryInput) {
+                cardExpiryInput.oninput = (e) => {
+                    let v = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+                    if (v.length >= 2) {
+                        e.target.value = v.substring(0, 2) + '/' + v.substring(2, 4);
+                    } else {
+                        e.target.value = v;
+                    }
+                };
+            }
+
+            if (stripeForm) {
+                stripeForm.onsubmit = (e) => {
+                    e.preventDefault();
+                    
+                    const payBtn = document.getElementById("pay-submit-btn");
+                    const payBtnText = document.getElementById("pay-btn-text");
+                    const errEl = document.getElementById("checkout-error-msg");
+                    
+                    payBtn.disabled = true;
+                    payBtnText.innerText = "Processing payment...";
+                    errEl.style.display = "none";
+                    
+                    setTimeout(() => {
+                        // Concurrency Double-Booking Check
+                        const bookings = getBookings();
+                        const bIdx = bookings.findIndex(b => b.id === currentCheckoutBookingId);
+                        
+                        if (bIdx === -1) {
+                            errEl.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: text-top; margin-right: 4px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg> Error: Booking not found.`;
+                            errEl.style.display = "block";
+                            payBtn.disabled = false;
+                            payBtnText.innerText = "Pay Deposit Securely";
+                            return;
+                        }
+                        
+                        const targetBooking = bookings[bIdx];
+                        
+                        // Check if another Confirmed booking occupies this day/slot
+                        const hasConfirmedEvent = bookings.some(b => b.eventDate === targetBooking.eventDate && b.status === 'Confirmed' && b.id !== currentCheckoutBookingId);
+                        
+                        if (hasConfirmedEvent) {
+                            errEl.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: text-top; margin-right: 4px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg> Concurrency Conflict: This date was just confirmed by another customer. Payment rolled back.`;
+                            errEl.style.display = "block";
+                            payBtn.disabled = false;
+                            payBtnText.innerText = "Pay Deposit Securely";
+                            return;
+                        }
+                        
+                        // Photoshoot slots conflict check
+                        let photoshootCollision = false;
+                        if (targetBooking.photoshootSlots && targetBooking.photoshootSlots.length > 0) {
+                            const activeBookings = bookings.filter(b => b.photoshootDate === targetBooking.eventDate && b.status === 'Confirmed' && b.id !== currentCheckoutBookingId);
+                            let occupiedSlots = [];
+                            activeBookings.forEach(ab => {
+                                occupiedSlots = occupiedSlots.concat(ab.photoshootSlots);
+                            });
+                            
+                            targetBooking.photoshootSlots.forEach(slot => {
+                                if (occupiedSlots.includes(slot)) {
+                                    photoshootCollision = true;
+                                }
+                            });
+                        }
+                        
+                        if (photoshootCollision) {
+                            errEl.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: text-top; margin-right: 4px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg> Concurrency Conflict: One of your selected photoshoot hours was just confirmed by another user. Payment rolled back.`;
+                            errEl.style.display = "block";
+                            payBtn.disabled = false;
+                            payBtnText.innerText = "Pay Deposit Securely";
+                            return;
+                        }
+                        
+                        // Update status to Confirmed
+                        targetBooking.status = "Confirmed";
+                        const depositAmt = getDepositAmount(targetBooking.eventType);
+                        targetBooking.depositPaid = depositAmt;
+                        
+                        localStorage.setItem("whiteoak_bookings", JSON.stringify(bookings));
+                        
+                        checkoutModal.style.display = "none";
+                        
+                        // Populate Success Modal Fields
+                        document.getElementById("success-booking-id").innerText = targetBooking.id;
+                        document.getElementById("success-deposit-amount").innerText = `Rs ${depositAmt.toLocaleString('en-IN')}`;
+                        successModal.style.display = "flex";
+                        
+                        // Refresh client bookings list
+                        const email = sessionStorage.getItem("woc_client_email");
+                        if (email) {
+                            renderClientBookings(email);
+                        }
+                    }, 1500);
+                };
+            }
+
+            checkAuth();
+
+            // Fade out page loader on load
+            window.addEventListener('load', () => {
+                const loader = document.getElementById('pulse-loader-overlay');
+                if (loader) {
+                    loader.classList.remove('active');
+                }
+            });
+        });
+    </script>
+
+    <div class="pulse-loader-overlay" id="pulse-loader-overlay">
+        <div class="pulse-loader-content">
+            <div class="pulse-loader-logo-container">
+                <img src="assets/logo/png/Oak logo green.png" alt="White Oak Castle Logo" class="pulse-loader-logo">
+            </div>
+            <div class="pulse-loader-dots">
+                <div class="pulse-dot"></div>
+                <div class="pulse-dot"></div>
+                <div class="pulse-dot"></div>
+                <div class="pulse-dot"></div>
+                <div class="pulse-dot"></div>
+            </div>
+            <div class="pulse-loader-text" id="pulse-loader-text">Loading White Oak Castle...</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinematic Photo & Video Gallery | White Oak Castle Kerala</title>
+    <meta name="description"
+        content="View high-resolution architectural photography, beautiful interior foyer spaces, and aerial drone footage of the White Oak Castle Convention Center in Moodal, Athavanad, Kerala.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@200;400;600;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css?v=2">
+</head>
+
+<body class="biophilic-theme">
+
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <header class="header glass-nav scrolled">
+        <nav class="navbar">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/logo/png/Oak ful logo green.png" alt="White Oak Castle" class="logo-img">
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About Venue</a></li>
+                <li class="nav-item"><a href="gallery.html" class="nav-link active-page">Gallery</a></li>
+                <li class="nav-item"><a href="booking.html" class="nav-link">Bookings</a></li>
+                <li class="nav-item"><a href="portal.html" class="nav-link">Login Portal</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main style="padding-top: 140px;">
+        <div class="container reveal active">
+            <div class="booking-intro-text text-center">
+                <div class="glass-badge"
+                    style="color: var(--accent-olive); border-color: var(--glass-border); background: rgba(85, 107, 47, 0.05);">
+                    Visual Tour</div>
+                <h1>Cinematic <span class="gradient-text">Gallery</span></h1>
+                <p>Immerse yourself in the grandeur of our structure through curated high-definition videos and
+                    architectural photography.</p>
+            </div>
+
+            <!-- Gallery Filter Buttons -->
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All Media</button>
+                <button class="filter-btn" data-filter="drone">Drone Shots</button>
+                <button class="filter-btn" data-filter="inauguration">Inauguration Day</button>
+                <button class="filter-btn" data-filter="exterior">Exterior</button>
+                <button class="filter-btn" data-filter="interior">Interior</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="gallery-grid" id="gallery-grid">
+
+                <!-- Drone Video 1 -->
+                <div class="gallery-item" data-category="drone">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/DJI_0283.MP4" muted loop preload="none" poster="assets/images/drone_1.jpg"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Drone Video</span>
+                        <h4>Aerial Front Flight</h4>
+                        <p>Cinematic drone pan displaying the front facade and floating cantilevered wings.</p>
+                    </div>
+                </div>
+
+                <!-- Drone Photo 1 -->
+                <div class="gallery-item" data-category="drone">
+                    <div class="gallery-media-wrapper">
+                        <img src="assets/images/drone_1.jpg" alt="Drone view of White Oak Castle Front">
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Drone Shot</span>
+                        <h4>Castle Overview</h4>
+                        <p>High-altitude landscape showing the biophilic layout integrated with local flora.</p>
+                    </div>
+                </div>
+
+                <!-- Inauguration Video 1 -->
+                <div class="gallery-item" data-category="inauguration">
+                    <div class="gallery-media-wrapper">
+                        <video
+                            src="assets/gallery/C8936.MP4"
+                            muted loop preload="none" poster="assets/images/lobby.jpg"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Inauguration</span>
+                        <h4>Foyer Illumination</h4>
+                        <p>Dynamic lighting systems during the evening inauguration ceremony.</p>
+                    </div>
+                </div>
+
+                <!-- Exterior Photo 1 -->
+                <div class="gallery-item" data-category="exterior">
+                    <div class="gallery-media-wrapper">
+                        <img src="assets/images/ex_1.jpg" alt="Exterior facade side view">
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Exterior</span>
+                        <h4>Cantilever Architecture</h4>
+                        <p>Stark white cantilever beams blending into matte olive metal accents.</p>
+                    </div>
+                </div>
+
+                <!-- Interior Photo 1 -->
+                <div class="gallery-item" data-category="interior">
+                    <div class="gallery-media-wrapper">
+                        <img src="assets/gallery/DSC07574.JPG" alt="Lobby Lounge Foyer interior">
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Interior</span>
+                        <h4>Minimalist Foyer Lounge</h4>
+                        <p>Earthy biophilic decor featuring interior plants and natural warm lighting.</p>
+                    </div>
+                </div>
+
+                <!-- Drone Video 2 -->
+                <div class="gallery-item" data-category="drone">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/DJI_0301.MP4" muted loop preload="none" poster="assets/images/drone_2.jpg"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Drone Video</span>
+                        <h4>Castle Plazas Flight</h4>
+                        <p>Close-up glide overlooking the outdoor green avenues and plazas.</p>
+                    </div>
+                </div>
+
+                <!-- Drone Photo 2 -->
+                <div class="gallery-item" data-category="drone">
+                    <div class="gallery-media-wrapper">
+                        <img src="assets/images/drone_2.jpg" alt="Top-down drone photo of Castle">
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Drone Shot</span>
+                        <h4>Top-down Perspective</h4>
+                        <p>Abstract geometric view showing the layout symmetry of the main structure.</p>
+                    </div>
+                </div>
+
+                <!-- Inauguration Video 2 -->
+                <div class="gallery-item" data-category="inauguration">
+                    <div class="gallery-media-wrapper">
+                        <video
+                            src="assets/gallery/C8936.MP4"
+                            muted loop preload="none" poster="assets/images/int_1.jpg"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Inauguration</span>
+                        <h4>Grand Entrance Flyby</h4>
+                        <p>Entrance hallway and lighting decorations set up for the grand opening.</p>
+                    </div>
+                </div>
+
+                <!-- Exterior Photo 2 -->
+                <div class="gallery-item" data-category="exterior">
+                    <div class="gallery-media-wrapper">
+                        <img src="assets/images/ex_2.jpg" alt="Modern exterior walkway">
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Exterior</span>
+                        <h4>Serene Plazas</h4>
+                        <p>Stunning white concrete walkways surrounding the entrance pond.</p>
+                    </div>
+                </div>
+
+                <!-- Interior Photo 2 -->
+                <div class="gallery-item" data-category="interior">
+                    <div class="gallery-media-wrapper">
+                        <img src="assets/images/int_2.jpg" alt="Grand hall view">
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Interior</span>
+                        <h4>Ceremonial Main Hall</h4>
+                        <p>Open layout structure with high white metal columns and expansive windows.</p>
+                    </div>
+                </div>
+
+                <!-- Drone Video 3 -->
+                <div class="gallery-item" data-category="drone">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/DJI_0306.MP4" muted loop preload="none" poster="assets/images/drone_3.jpg"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Drone Video</span>
+                        <h4>Grand Evening Flight</h4>
+                        <p>Sweeping sunset flight displaying the stunning profile against the horizon.</p>
+                    </div>
+                </div>
+
+                <!-- Exterior Photo 3 -->
+                <div class="gallery-item" data-category="exterior">
+                    <div class="gallery-media-wrapper">
+                        <img src="assets/images/ex_3.jpg" alt="Architectural angles">
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Exterior</span>
+                        <h4>Stark Geometry</h4>
+                        <p>Beautiful contrast of pure white materials against green biophilic landscaping.</p>
+                    </div>
+                </div>
+
+                <!-- Interior Photo 3 -->
+                <div class="gallery-item" data-category="interior">
+                    <div class="gallery-media-wrapper">
+                        <img src="assets/images/int_3.jpg" alt="Detailed interior ceiling">
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Interior</span>
+                        <h4>Acoustic Cloud Ceiling</h4>
+                        <p>Suspended acoustic panel systems providing perfect sound absorption for major events.</p>
+                    </div>
+                </div>
+
+                <!-- Inauguration Video 3 -->
+                <div class="gallery-item" data-category="inauguration">
+                    <div class="gallery-media-wrapper">
+                        <video
+                            src="assets/gallery/C8936.MP4"
+                            muted loop preload="none" poster="assets/images/int_5.jpg"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Inauguration</span>
+                        <h4>Ceremony Highlights</h4>
+                        <p>Dynamic interior walkthrough showcasing active event configurations.</p>
+                    </div>
+                </div>
+
+                <!-- Exterior Video 1 -->
+                <div class="gallery-item" data-category="exterior">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/extirior/C9069.MP4" muted loop preload="none"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Exterior Video</span>
+                        <h4>Exterior Walkthrough I</h4>
+                        <p>Cinematic ground-level walkthrough of the White Oak Castle exterior facade.</p>
+                    </div>
+                </div>
+
+                <!-- Exterior Video 2 -->
+                <div class="gallery-item" data-category="exterior">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/extirior/C9070.MP4" muted loop preload="none"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Exterior Video</span>
+                        <h4>Exterior Walkthrough II</h4>
+                        <p>Sweeping reveal of the cantilevered white wings set against lush green landscaping.</p>
+                    </div>
+                </div>
+
+                <!-- Exterior Video 3 -->
+                <div class="gallery-item" data-category="exterior">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/extirior/C9071.MP4" muted loop preload="none"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Exterior Video</span>
+                        <h4>Grand Arrival View</h4>
+                        <p>Full wide-angle capture of the arrival plaza and entrance portico in natural light.</p>
+                    </div>
+                </div>
+
+                <!-- Exterior Video 4 -->
+                <div class="gallery-item" data-category="exterior">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/extirior/C9075.MP4" muted loop preload="none"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Exterior Video</span>
+                        <h4>Evening Silhouette</h4>
+                        <p>Golden-hour footage highlighting the stark geometric lines of the castle perimeter.</p>
+                    </div>
+                </div>
+
+                <!-- Interior Video 1 -->
+                <div class="gallery-item" data-category="interior">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/interior/C9034.MP4" muted loop preload="none"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Interior Video</span>
+                        <h4>Main Hall Reveal</h4>
+                        <p>Sweeping walkthrough of the ceremonial main hall with high white columns and expansive windows.</p>
+                    </div>
+                </div>
+
+                <!-- Interior Video 2 -->
+                <div class="gallery-item" data-category="interior">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/interior/C9035.MP4" muted loop preload="none"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Interior Video</span>
+                        <h4>Grand Foyer Tour</h4>
+                        <p>Cinematic pan through the grand entrance foyer and reception corridor.</p>
+                    </div>
+                </div>
+
+                <!-- Interior Video 3 -->
+                <div class="gallery-item" data-category="interior">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/interior/C9040.MP4" muted loop preload="none"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Interior Video</span>
+                        <h4>Banquet Hall Flow</h4>
+                        <p>Fluid walkthrough showcasing the banquet hall's capacity and ambient lighting setup.</p>
+                    </div>
+                </div>
+
+                <!-- Interior Video 4 -->
+                <div class="gallery-item" data-category="interior">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/interior/C9041.MP4" muted loop preload="none"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Interior Video</span>
+                        <h4>Ceiling Architecture</h4>
+                        <p>Close-up glide across suspended acoustic cloud panels and geometric ceiling structures.</p>
+                    </div>
+                </div>
+
+                <!-- Interior Video 5 -->
+                <div class="gallery-item" data-category="interior">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/interior/C9043.MP4" muted loop preload="none"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Interior Video</span>
+                        <h4>Stage Perspective</h4>
+                        <p>Front-facing stage view with full lighting rig and side wing seating arrangements visible.</p>
+                    </div>
+                </div>
+
+                <!-- Interior Video 6 -->
+                <div class="gallery-item" data-category="interior">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/interior/C9044.MP4" muted loop preload="none"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Interior Video</span>
+                        <h4>Lobby Ambiance</h4>
+                        <p>Elegant lobby corridor bathed in warm natural light filtering through full-height windows.</p>
+                    </div>
+                </div>
+
+                <!-- Interior Video 7 -->
+                <div class="gallery-item" data-category="interior">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/interior/C9047.MP4" muted loop preload="none"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Interior Video</span>
+                        <h4>Garden Wing Passage</h4>
+                        <p>Transitional corridor connecting the main hall to the garden terrace and outdoor pavilions.</p>
+                    </div>
+                </div>
+
+                <!-- Interior Video 8 -->
+                <div class="gallery-item" data-category="interior">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/interior/C9048.MP4" muted loop preload="none"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Interior Video</span>
+                        <h4>Premium Suite View</h4>
+                        <p>Full walkthrough of the VIP suite area with private balcony and panoramic landscape views.</p>
+                    </div>
+                </div>
+
+                <!-- Interior Video 9 -->
+                <div class="gallery-item" data-category="interior">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/interior/C9050.MP4" muted loop preload="none"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Interior Video</span>
+                        <h4>Dining Hall Showcase</h4>
+                        <p>Rotating reveal of the dining hall and catering spaces in pristine event-ready configuration.</p>
+                    </div>
+                </div>
+
+                <!-- Interior Video 10 -->
+                <div class="gallery-item" data-category="interior">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/interior/C9066.MP4" muted loop preload="none"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Interior Video</span>
+                        <h4>Evening Interior Glow</h4>
+                        <p>Twilight mood lighting illuminating the castle interior during golden-hour ambiance setting.</p>
+                    </div>
+                </div>
+
+                <!-- Drone Video – Aerial Glide I -->
+                <div class="gallery-item" data-category="drone">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/dron and inaguation/DJI_0315.MP4" muted loop preload="none"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Drone Video</span>
+                        <h4>Aerial Glide I</h4>
+                        <p>Sweeping low-altitude drone pass revealing the full castle facade and entrance plaza.</p>
+                    </div>
+                </div>
+
+                <!-- Drone Video – Aerial Glide II -->
+                <div class="gallery-item" data-category="drone">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/dron and inaguation/DJI_0317.MP4" muted loop preload="none"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Drone Video</span>
+                        <h4>Aerial Glide II</h4>
+                        <p>Dramatic side orbit tracking the cantilevered wing against the open sky.</p>
+                    </div>
+                </div>
+
+                <!-- Drone Video – Rising Reveal -->
+                <div class="gallery-item" data-category="drone">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/dron and inaguation/DJI_0318.MP4" muted loop preload="none"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Drone Video</span>
+                        <h4>Rising Reveal</h4>
+                        <p>Vertical ascent from ground level to high altitude showcasing the full estate footprint.</p>
+                    </div>
+                </div>
+
+                <!-- Drone Video – Top-Down Spiral -->
+                <div class="gallery-item" data-category="drone">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/dron and inaguation/DJI_0321.MP4" muted loop preload="none"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Drone Video</span>
+                        <h4>Top-Down Spiral</h4>
+                        <p>Overhead spiral descent highlighting the symmetrical geometric layout of the grounds.</p>
+                    </div>
+                </div>
+
+                <!-- Drone Video – Sunset Flyover -->
+                <div class="gallery-item" data-category="drone">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/dron and inaguation/DJI_0322.MP4" muted loop preload="none"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Drone Video</span>
+                        <h4>Sunset Flyover</h4>
+                        <p>Golden-hour cinematic flyover capturing the castle silhouette against a vivid Kerala sky.</p>
+                    </div>
+                </div>
+
+                <!-- Inauguration Video – Opening Ceremony I -->
+                <div class="gallery-item" data-category="inauguration">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/dron and inaguation/DJI_0315.MP4" muted loop preload="none"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Inauguration</span>
+                        <h4>Opening Ceremony I</h4>
+                        <p>Aerial coverage of the grand inauguration event with guests arriving at the castle grounds.</p>
+                    </div>
+                </div>
+
+                <!-- Inauguration Video – Opening Ceremony II -->
+                <div class="gallery-item" data-category="inauguration">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/dron and inaguation/DJI_0317.MP4" muted loop preload="none"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Inauguration</span>
+                        <h4>Opening Ceremony II</h4>
+                        <p>Overhead drone view capturing the full crowd gathering during the inaugural celebrations.</p>
+                    </div>
+                </div>
+
+                <!-- Inauguration Video – Celebration Flyover -->
+                <div class="gallery-item" data-category="inauguration">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/dron and inaguation/DJI_0318.MP4" muted loop preload="none"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Inauguration</span>
+                        <h4>Celebration Flyover</h4>
+                        <p>Wide drone shot of the festively lit castle during the evening inauguration program.</p>
+                    </div>
+                </div>
+
+                <!-- Inauguration Video – Grand Reveal -->
+                <div class="gallery-item" data-category="inauguration">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/dron and inaguation/DJI_0321.MP4" muted loop preload="none"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Inauguration</span>
+                        <h4>Grand Reveal</h4>
+                        <p>Dramatic top-down spiral revealing the castle in full splendour on opening day.</p>
+                    </div>
+                </div>
+
+                <!-- Inauguration Video – Evening Finale -->
+                <div class="gallery-item" data-category="inauguration">
+                    <div class="gallery-media-wrapper">
+                        <video src="assets/gallery/dron and inaguation/DJI_0322.MP4" muted loop preload="none"></video>
+                        <div class="video-overlay-play">&#9658;</div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Inauguration</span>
+                        <h4>Evening Finale</h4>
+                        <p>Cinematic sunset flyover closing the inaugural day with the castle glowing against the Kerala sky.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightbox-close">&times;</button>
+            <div id="lightbox-media-container"
+                style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
+                <!-- Video or Image injected dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer" style="padding-top: 100px;">
+        <div class="glass-panel footer-panel">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/logo/png/Oak ful logo green.png" alt="White Oak Castle" class="footer-logo">
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;">V2GW+943, Moodal, Athavanad,<br>near Kuttippuram, Malappuram district,<br>Kerala 679571</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/whiteoakcastle" target="_blank" class="social-link" title="Instagram" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </a>
+                        <a href="https://www.facebook.com/whiteoakcastle" target="_blank" class="social-link" title="Facebook" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                        <a href="https://wa.me/919876500000" target="_blank" class="social-link" title="WhatsApp" aria-label="WhatsApp">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="f-col">
+                        <h4>Inquiries</h4>
+                        <a href="mailto:booking@whiteoakcastle.com">booking@whiteoakcastle.com</a>
+                        <a href="tel:+919876500000">+91 98765 00000</a>
+                        <a href="https://maps.google.com/?q=V2GW%2B943,+Moodal,+Athavanad,+Kerala+679571"
+                            target="_blank" style="text-decoration: underline;">Open Google Maps</a>
+                    </div>
+                    <div class="f-col">
+                        <h4>Navigation</h4>
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About Venue</a>
+                        <a href="gallery.html">Gallery</a>
+                        <a href="booking.html">Bookings</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 White Oak Castle Convention Center. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Speed-Dial FAB -->
+    <div class="contact-fab" id="contact-fab" role="navigation" aria-label="Contact options">
+        <div class="fab-actions">
+            <a href="https://wa.me/919876500000?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20booking%20White%20Oak%20Castle."
+               target="_blank" class="fab-action fab-whatsapp" data-label="WhatsApp" aria-label="Chat on WhatsApp">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/whiteoakcastle"
+               target="_blank" class="fab-action fab-instagram" data-label="Instagram" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                </svg>
+            </a>
+            <a href="https://maps.google.com/?q=V2GW%2B943,+Moodal,+Athavanad,+Kerala+679571"
+               target="_blank" class="fab-action fab-gmaps" data-label="Google Maps" aria-label="View on Google Maps">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                </svg>
+            </a>
+        </div>
+        <div class="fab-main" tabindex="0" role="button" aria-label="Open contact options">
+            <img src="assets/logo/png/Oak logo green.png" alt="White Oak Castle" class="fab-logo">
+        </div>
+    </div>
+
+    <div class="pulse-loader-overlay" id="pulse-loader-overlay">
+        <div class="pulse-loader-content">
+            <div class="pulse-loader-logo-container">
+                <img src="assets/logo/png/Oak logo green.png" alt="White Oak Castle Logo" class="pulse-loader-logo">
+            </div>
+            <div class="pulse-loader-dots">
+                <div class="pulse-dot"></div>
+                <div class="pulse-dot"></div>
+                <div class="pulse-dot"></div>
+                <div class="pulse-dot"></div>
+                <div class="pulse-dot"></div>
+            </div>
+            <div class="pulse-loader-text" id="pulse-loader-text">Loading White Oak Castle...</div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

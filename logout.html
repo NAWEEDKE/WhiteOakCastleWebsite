@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logged Out - White Oak Castle</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        .logout-section {
+            padding-top: 140px;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logout-card {
+            max-width: 500px;
+            width: 90%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            box-shadow: var(--glass-shadow);
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="biophilic-theme">
+
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <header class="header glass-nav scrolled">
+        <nav class="navbar">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/logo/png/Oak ful logo green.png" alt="White Oak Castle" class="logo-img">
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">Concept</a></li>
+                <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li class="nav-item"><a href="booking.html" class="nav-link">Bookings</a></li>
+                <li class="nav-item"><a href="portal.html" class="nav-link">Login Portal</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="logout-section">
+            <div class="logout-card">
+                <span class="success-icon" style="font-size: 4rem; display: block; margin-bottom: 1.5rem;">👋</span>
+                <h2 style="font-size: 2rem; color: var(--accent-olive); margin-bottom: 1rem;">Logged Out Successfully</h2>
+                <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 2rem;">
+                    You have been securely signed out. Thank you for visiting White Oak Castle.
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <a href="portal.html" class="btn btn-solid" style="border-radius: 12px; padding: 0.8rem;">Log In Again</a>
+                    <a href="index.html" class="btn btn-outline" style="border-radius: 12px; padding: 0.8rem; border-color: var(--accent-olive); color: var(--accent-olive);">Return to Homepage</a>
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1.5rem;" id="redirect-text">
+                    Redirecting you to the homepage in <span id="countdown" style="font-weight: 600; color: var(--accent-gold);">5</span> seconds...
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" style="padding-top: 50px;">
+        <div class="glass-panel footer-panel reveal active">
+            <div class="footer-bottom" style="border-top: none; padding-top: 0; text-align: center;">
+                <p>&copy; 2026 White Oak Castle Convention Center. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let seconds = 5;
+            const countdownEl = document.getElementById("countdown");
+            const interval = setInterval(() => {
+                seconds--;
+                if (countdownEl) countdownEl.innerText = seconds;
+                if (seconds <= 0) {
+                    clearInterval(interval);
+                    window.location.href = "index.html";
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
