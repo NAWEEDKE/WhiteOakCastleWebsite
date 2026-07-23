@@ -2952,72 +2952,147 @@ img.lightbox-media {
         gap: 1.2rem;
     }
 
-    /* Booking */
+    /* Booking Page Mobile Refinements */
     .booking-section {
-        padding-top: 100px;
+        padding-top: 90px;
+        padding-bottom: 50px;
+    }
+
+    .booking-intro-text {
+        margin-bottom: 1.5rem;
+    }
+
+    .booking-intro-text h1 {
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+
+    .booking-intro-text p {
+        font-size: 0.95rem;
+        margin-bottom: 0;
     }
 
     .booking-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .booking-intro-text h1 {
-        font-size: 2rem;
+        gap: 1.25rem;
     }
 
     .booking-details-panel,
-    .booking-scheduler-panel {
-        padding: 1.5rem;
-        border-radius: 16px;
+    .booking-scheduler-panel,
+    .photoshoot-scheduler-card {
+        padding: 1.25rem 1rem !important;
+        border-radius: 18px !important;
     }
 
-    .form-row-grid {
-        grid-template-columns: 1fr;
-        gap: 0;
+    .section-title {
+        font-size: 1.5rem !important;
+        margin-bottom: 1.25rem !important;
     }
 
-    /* Footer */
-    .footer-content {
-        flex-direction: column;
-        gap: 2rem;
+    .form-group {
+        margin-bottom: 1.2rem;
     }
 
-    .footer-links {
-        flex-direction: column;
-        gap: 1.5rem;
+    .form-group label {
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
     }
 
-    .footer-panel {
-        padding: 3rem 5% 2rem;
+    .form-control,
+    .custom-picker-trigger {
+        font-size: 16px !important; /* Prevents auto-zoom on iOS */
+        padding: 0.85rem 0.9rem;
+        border-radius: 12px;
     }
 
-    /* Lightbox */
-    .lightbox-media {
-        width: 95vw;
-        max-width: 95vw;
-        border-radius: 10px;
+    .custom-picker-dropdown {
+        min-width: 100% !important;
+        width: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+        padding: 0.8rem;
+        box-sizing: border-box;
     }
 
-    .lightbox-close {
-        top: -40px;
-        font-size: 2rem;
+    /* Mobile Calendar */
+    .inline-datepicker {
+        padding: 0.8rem 0.5rem !important;
+        border-radius: 14px;
     }
 
-    /* FAB Contact Button */
-    .contact-fab {
-        bottom: 1.2rem;
-        right: 1.2rem;
+    .datepicker-header {
+        margin-bottom: 0.6rem;
     }
 
-    .fab-main {
-        width: 52px;
-        height: 52px;
+    .month-year-label {
+        font-size: 0.95rem;
     }
 
-    .fab-logo {
-        width: 30px;
-        height: 30px;
+    .datepicker-weekdays {
+        font-size: 0.75rem;
+        margin-bottom: 0.4rem;
+        padding-bottom: 0.3rem;
+    }
+
+    .datepicker-days {
+        gap: 3px !important;
+    }
+
+    .datepicker-day {
+        font-size: 0.85rem;
+        min-height: 38px;
+        border-radius: 6px;
+    }
+
+    /* Mobile Event Slots */
+    .slots-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0.5rem !important;
+    }
+
+    .slot-btn {
+        padding: 0.65rem 0.2rem !important;
+        font-size: 0.78rem !important;
+        border-radius: 8px;
+    }
+
+    .slot-legend {
+        gap: 0.6rem;
+        font-size: 0.78rem;
+        justify-content: space-between;
+    }
+
+    .legend-item {
+        gap: 0.3rem;
+    }
+
+    .legend-color {
+        width: 12px;
+        height: 12px;
+    }
+
+    /* Mobile Bottom Summary & CTA */
+    .booking-bottom-panel {
+        margin-top: 1.5rem !important;
+        gap: 1rem !important;
+    }
+
+    .price-summary-panel {
+        padding: 1.25rem 1rem !important;
+        border-radius: 16px !important;
+    }
+
+    /* Modals on Mobile */
+    .login-modal {
+        padding: 0 10px;
+    }
+
+    .login-modal-content,
+    .success-card,
+    .portal-card {
+        padding: 1.25rem 1rem !important;
+        border-radius: 20px !important;
+        max-width: 96vw !important;
     }
 }
 
@@ -3078,18 +3153,46 @@ img.lightbox-media {
         padding: 2rem 1.2rem;
     }
 
-    /* Booking */
+    /* Booking Extra Small Screen Enhancements */
+    .booking-section {
+        padding-top: 85px;
+    }
+
     .booking-intro-text h1 {
-        font-size: 1.7rem;
+        font-size: 1.6rem !important;
+    }
+
+    .booking-intro-text p {
+        font-size: 0.88rem !important;
     }
 
     .booking-details-panel,
     .booking-scheduler-panel {
-        padding: 1.2rem;
+        padding: 1rem 0.8rem !important;
+        border-radius: 16px !important;
     }
 
     .photoshoot-scheduler-card {
-        padding: 1.5rem 1rem;
+        padding: 1.2rem 0.8rem !important;
+    }
+
+    .slots-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 4px !important;
+    }
+
+    .slot-btn {
+        font-size: 0.75rem !important;
+        padding: 0.55rem 0.15rem !important;
+    }
+
+    .datepicker-days {
+        gap: 2px !important;
+    }
+
+    .datepicker-day {
+        font-size: 0.8rem !important;
+        min-height: 36px;
     }
 
     /* Footer */
@@ -3121,19 +3224,14 @@ img.lightbox-media {
         padding: 1rem 0;
     }
 
-    /* Slots grid */
-    .slots-grid {
-        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-    }
-
     /* Timepicker */
     .timepicker-options {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr) !important;
     }
 
     /* Portal card */
     .portal-card {
-        padding: 1.5rem;
-        margin: 20px auto;
+        padding: 1.2rem 0.9rem !important;
+        margin: 15px auto;
     }
 }
